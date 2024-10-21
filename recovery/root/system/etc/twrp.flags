@@ -22,18 +22,31 @@
 
 /misc emmc /dev/block/by-name/misc  
 
-/persist emmc /dev/block/by-name/persist flags=display="Persist";
+/persist emmc /dev/block/by-name/persist flags=display="Persist";flashimg
 /logo emmc /dev/block/by-name/logo flags=display="logo";
 /fbootlogo emmc /dev/block/by-name/fbootlogo flags=display="fbootlogo"
 /tranfs ext4 /dev/block/by-name/tranfs flags=display="tranfs"
 /miscdata emmc /dev/block/by-name/miscdata flags=display="miscdata"
 
-/system_image           emmc      /dev/block/mapper/system_a /dev/block/mapper/system_b                                   flags=display="System Image";backup=1;flashimg=1
-/vendor_image           emmc      /dev/block/mapper/vendor_a  /dev/block/mapper/vendor_b                                  flags=display="Vendor Image";backup=1;flashimg=1
-/product_image          emmc      /dev/block/mapper/product_a  /dev/block/mapper/product_b                                 flags=display="Product Image";backup=1;flashimg=1
-/system_ext_image       emmc      /dev/block/mapper/system_ext_a  /dev/block/mapper/system_ext_b                              flags=display="System_EXT Image";backup=1;flashimg=1
-/vendor_dlkm_image      emmc      /dev/block/mapper/vendor_dlkm_a /dev/block/mapper/vendor_dlkm_b                              flags=display="Vendor_Dlkm Image";backup=1;flashimg=1
+
 # Dynamic Partitions ( A Slots )
+
+/system_image           emmc      /dev/block/mapper/system_a                                    flags=display="System Image";backup=1;flashimg=1
+/vendor_image           emmc      /dev/block/mapper/vendor_a                                    flags=display="Vendor Image";backup=1;flashimg=1
+/product_image          emmc      /dev/block/mapper/product_a                                   flags=display="Product Image";backup=1;flashimg=1
+/system_ext_image       emmc      /dev/block/mapper/system_ext_a                                flags=display="System_EXT Image";backup=1;flashimg=1
+/vendor_dlkm_image      emmc      /dev/block/mapper/vendor_dlkm_a                               flags=display="Vendor_Dlkm Image";backup=1;flashimg=1
+
+# Dynamic Partitions ( B Slots )
+
+/system_image           emmc      /dev/block/mapper/system_b                                   flags=display="System Image";backup=1;flashimg=1
+/vendor_image           emmc      /dev/block/mapper/vendor_b                                  flags=display="Vendor Image";backup=1;flashimg=1
+/product_image          emmc      /dev/block/mapper/product_b                                 flags=display="Product Image";backup=1;flashimg=1
+/system_ext_image       emmc      /dev/block/mapper/system_ext_b                              flags=display="System_EXT Image";backup=1;flashimg=1
+/vendor_dlkm_image      emmc      /dev/block/mapper/vendor_dlkm_b                              flags=display="Vendor_Dlkm Image";backup=1;flashimg=1
+
+
+# Dynamic Partitions ( mount )
 
 
 /system_errofs           auto      /dev/block/dm-0                                    flags=display="System Errofs";wipeingui
@@ -41,7 +54,9 @@
 /vendor_errofs           auto      /dev/block/dm-2                                    flags=display="Vendor Errofs";wipeingui
 /product_errofs           auto      /dev/block/dm-3                                    flags=display="Product Errofs";wipeingui
 
-
+/userdata_mapper         emmc     /dev/block/mapper/userdata           flags=display="User data mapper";flashimg
+/userdata_default         emmc     /dev/block/by-name/userdata           flags=display="User data default";flashimg
+/super         emmc     /dev/block/by-name/super           flags=display="Super";flashimg
 
 
 # Removable storage
